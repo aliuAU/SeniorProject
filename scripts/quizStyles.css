@@ -1,0 +1,130 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: "Raleway", sans-serif;
+    color: #707070;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+:root {
+    --hue-neutral: 200;
+    --hue-wrong: 0;
+    --hue-correct: 145;
+}
+
+body {
+    --hue: var(--hue-neutral);
+    padding: 0;
+    margin: 0;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+img {
+    justify-content: center;
+    margin-left: 213px;
+    margin-bottom: 40px;
+    width: 360px;
+    height: 200px
+}
+
+h3 {
+    text-align: center;
+    font-family: "Raleway", sans-serif;
+    font-size: 1.2em;
+    color: black;
+    margin: 0px;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+body.correct {
+    --hue: var(--hue-correct);
+}
+
+body.wrong {
+    --hue: var(--hue-wrong);
+}
+
+.image-container {
+    display: flex;
+    align-items: center;
+    width: 50px;
+    height: 60px;
+}
+
+.container {
+    width: 800px;
+    max-width: 80%;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.score {
+    background: linear-gradient(90deg, #f00, #ff2b00, #f50, #ff8000, #fa0, #ffd500, #ff0, #d4ff00, #af0, #80ff00, #5f0, #2bff00, #0f0, #00ff2b, #0f5, #00ff80, #0fa, #00ffd5, #0ff, #00d4ff, #0af, #007fff, #05f, #002bff, #00f, #2a00ff, #50f, #7f00ff, #a0f, #d400ff, #f0f, #ff00d4, #f0a, #ff0080, #f05, #ff002b, #f00);
+    color: #0000;
+    text-align: center;
+    font-family: "Raleway", sans-serif;
+    font-size: 1.2em;
+    color: #707070;
+    margin: 180px;
+    padding: 0;
+    overflow-x: hidden;
+    font-size: larger;
+}
+
+.quiz-btn-grid {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.quiz-answer-btn {
+    width: 400px !important;
+    height: 300px !important;
+}
+
+.quiz-btn {
+    border: 2px solid hsl(var(--hue), 100%, 30%);
+    background-color: hsl(var(--hue), 100%, 50%);
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: white;
+    outline: none;
+}
+
+    .quiz-btn:hover {
+        border-color: black;
+    }
+
+    .quiz-btn.correct {
+        --hue: var(--hue-correct);
+        color: black;
+    }
+
+    .quiz-btn.wrong {
+        --hue: var(--hue-wrong);
+    }
+
+.quiz-start-btn, .quiz-next-btn, .quiz-calculate-btn {
+    font-size: 3.0rem;
+    font-weight: bold;
+    padding: 10px 20px;
+}
+
+.quiz-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hide {
+    display: none;
+}
