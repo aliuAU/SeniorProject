@@ -1,0 +1,70 @@
+﻿@model Movie
+
+<form method="post" enctype="multipart/form-data">
+    <input asp-for="ImageURL" hidden />
+    <div class="row">
+        <div class="col-10">
+            <div class="border p-3 mt-5">
+                <div class="row pb-3">
+                    <h2 class="text-primary" @(Model == null ? "Add Movie" : "Edit Movie")></h2>
+                    </hr>
+                </div>
+                <div class="mb-3">
+                    <label>Movie Name</label>
+                    <input asp-for="MovieName" class="form-control" />
+                    <span asp-validation-for="MovieName" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label>Movie Genre</label>
+                    <select asp-for="MovieGenreId" asp-items="ViewBag.MovieGenreList" class="form-select"></select>
+                </div>
+                <div class="mb-3">
+                    <label>Movie Description</label>
+                    <input asp-for="MovieDescription" class="form-control" />
+                    <span asp-validation-for="MovieDescription" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label>Director</label>
+                    <input asp-for="Director" class="form-control" />
+                    <span asp-validation-for="Director" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label>Release Year</label>
+                    <input asp-for="ReleaseYear" class="form-control" />
+                    <span asp-validation-for="ReleaseYear" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label>Photo</label>
+                    <input type="file" name="file" asp-for="ImageURL" class="form-control" />
+                </div>
+                @if (Model != null)
+                {
+                    <button type="submit" class="btn btn-lg btn-primary" style="width:200px">Edit Movie</button>
+                }
+                else
+                {
+                    <button type="submit" class="btn btn-lg btn-primary" style="width:200px">Add Movie</button>
+                }
+                <a asp-controller="Movie" asp-action="Index" class="btn btn-lg btn-primary" style="width:200px">Back</a>
+            </div>
+
+        </div>
+        <div class="col-2">
+            @if (Model != null)
+            {
+                <img src="@Model.ImageURL" width="350px" height="500px"
+                    style="border-radius:1px; border:1px solid #bbb9b9"/>
+            }
+        </div>
+    </div>
+
+</form>
+
+
+@*
+    @section Scripts{
+        @{
+         <partial name="_ValidationScriptsPartial"/> /controllerin frontend tarafında yapılması için
+        }
+    }
+*@

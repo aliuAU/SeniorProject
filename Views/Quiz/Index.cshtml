@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="~/scripts/quizStyles.css" rel="stylesheet">
+    <script defer src="~/scripts/script.js"></script>
+    <title>Quiz</title>
+</head>
+<body>
+    <div class="container">
+        <div class="quiz-image-container">
+            <img src="~/img/quizgiris.png" id="quiz-question-image">
+        </div>
+        <div id="quiz-general-text">
+            <h3>
+                Do you want to test your movie knowledge? This quiz with 10 questions is perfect for you.
+                <br>Click the start button and start the quiz!
+            </h3>
+        </div>
+        <div id="quiz-question-container" class="hide">
+            <div id="quiz-question">Question</div>
+            <div id="quiz-answer-buttons" class="quiz-btn-grid">
+                <button class="quiz-answer-btn quiz-btn">Answer 1</button>
+                <button class="quiz-answer-btn quiz-btn">Answer 2</button>
+                <button class="quiz-answer-btn quiz-btn">Answer 3</button>
+                <button class="quiz-answer-btn quiz-btn">Answer 4</button>
+            </div>
+        </div>
+        <div class="quiz-controls">
+            <button id="quiz-start-btn" class="quiz-start-btn quiz-btn">Start</button>
+            <button id="quiz-next-btn" class="quiz-next-btn quiz-btn hide">Next</button>
+            <button id="quiz-calculate-btn" class="quiz-calculate-btn quiz-btn hide">Next</button>
+        </div>
+    </div>
+</body>
+</html>
