@@ -1,0 +1,31 @@
+﻿@model Movie
+
+<form method="post">
+    <div class="border p-3 mt-5">
+        <div class="row pb-3">
+            <h2 class="text-primary"> Delete Movie Genre></h2>
+            </hr>
+        <div class="mb-3">
+            <label>Movie Name</label>
+            <input asp-for="MovieName" disabled class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label>Movie Description</label>
+            <input asp-for="MovieDescription" disabled class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label>Movie Director</label>
+            <input asp-for="Director" disabled class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-lg btn-primary" style="width:200px">Delete Movie</button>
+        <a asp-controller="Movie" asp-action="Index" class="btn btn-lg btn-primary" style="width:200px">Back</a>
+    </div>
+
+</form>
+@*
+    @section Scripts{
+        @{
+         <partial name="_ValidationScriptsPartial"/> /controllerin frontend tarafında yapılması için
+        }
+    }
+*@

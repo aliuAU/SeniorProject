@@ -1,0 +1,89 @@
+﻿@using FilmFolio.Utility;
+
+@model List<Movie>
+
+@if (TempData["ok"] != null)
+{
+    <h2>@TempData["ok"]</h2>
+}
+
+
+<div class="container">
+    <div class="row pt-3 pb-4">
+        <div>
+            <h1>Movies</h1>
+            <script defer src="~/scripts/filter1.js"></script>
+        </div>
+    </div>
+
+<table class="table table-border">
+    <thead>
+    
+
+        <tr>
+            <th>
+                Movie Name
+            </th>
+            <th>
+                Movie Genre
+            </th>
+             <th>
+                Movie Description
+            </th>
+             <th>
+                Director
+            </th>
+             <th>
+                Release Year
+            </th>
+             <th>
+                Average Rate
+            </th>
+            <th>
+            </th>
+                @if (User.IsInRole(UserRoles.Role_Admin))
+                {
+                    <th>
+                    </th>
+                    <th>
+                    </th>
+            }
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach(var movie in Model){
+                <tr style="background-color: white ; color: black;">
+                <td>@movie.MovieName</td>
+                <td>@movie.Genre.Genre</td>
+                <td>@movie.MovieDescription</td>
+                <td>@movie.Director</td>
+                <td>@movie.ReleaseYear</td>
+                <td>@movie.AverageRating</td>
+
+                <td>
+                   <a asp-controller="MoviePage" asp-action="Index" asp-route-id="@movie.Id" type="button" class="btn btn-info" style="width:150px">Movie Page</a>
+                </td>
+                @if(User.IsInRole(UserRoles.Role_Admin)){
+               
+                    <td>
+                        <a asp-controller="Movie" asp-action="MovieAddEdit" asp-route-id="@movie.Id" type="button" class="btn btn-success" style="width:150px">Edit</a>
+                    </td>
+                    <td>
+                        <a asp-controller="Movie" asp-action="DeleteMovie" asp-route-id="@movie.Id" type="button" class="btn btn-danger" style="width:150px">Delete</a>
+                    </td>
+                 }
+            </tr>
+        }
+    </tbody>
+</table>
+    @if (User.IsInRole(UserRoles.Role_Admin))
+    {
+        <div class="row pt-3 pb-2">
+            <div>
+                <a asp-controller="Movie" asp-action="MovieAddEdit" class="btn btn-lg btn-primary" type="button">New Movie
+                </a>
+            </div>
+        </div>
+    }
+</div>

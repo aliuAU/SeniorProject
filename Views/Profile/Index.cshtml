@@ -1,0 +1,99 @@
+﻿@{
+    ViewData["Title"] = "Profile";
+    var profileImageUrl = ViewBag.ProfileImageUrl as string;
+    var gender = ViewBag.Gender as Enum;
+    var birthdate = ViewBag.BirthDate as string;
+    var watchlist = ViewBag.Watchlist as List<FilmFolio.Models.Movie>;
+}
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/jquery.slick/1.8.1/slick.css" />
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/jquery.slick/1.8.1/slick-theme.css" />
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.slick/1.8.1/slick.min.js"></script>
+
+<style>
+    .profile-container {
+        margin-top: 60px;
+    }
+
+    .profile-details {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .profile-image {
+        width: 250px;
+        height: 250px;
+    }
+
+    .watchlist-container {
+        margin: 100px 230px 0px 230px;
+    }
+</style>
+
+<div class="profile-container">
+    <h2>Welcome to Profile Page!</h2>
+    <div class="profile-details">
+        <div class="profile-image">
+            @if (!string.IsNullOrEmpty(profileImageUrl))
+            {
+                <img src="@profileImageUrl" alt="Profile Image" height="250" width="250" />
+            }
+            else
+            {
+                <img src="~/img/user-photo.png" height="250" width="250" />
+
+            }
+        </div>
+        <div class="profile-attributes nav-link">
+            <p class="label">Birthdate: @ViewBag.BirthDate</p>
+            <p class="label">Email: @ViewBag.Username</p>
+            @if (ViewBag.Gender == "f")
+            {
+                <p class="label">Gender: Female</p>
+            }
+            else if (ViewBag.Gender == "m")
+            {
+                <p class="label">Gender: Male</p>
+            }
+
+            <p>Hi Cinelover, This is your profile page. You can see your personal information and tastes here.</p>
+            <p>Have fun!</p> 
+        </div>
+    </div>
+    <div class="watchlist-container">
+        <div class="watchlist">
+            <h4>Watchlist</h4>
+            @if (watchlist != null && watchlist.Any())
+            {
+                <div class="slick-slider">
+                    @foreach (var movie in watchlist)
+                    {
+                        <div>
+                            <img src="@movie.ImageURL" alt="Movie Image" height="250" width="250" />
+                            <p>@movie.MovieName</p>
+                        </div>
+                    }
+                </div>
+            }
+            else
+            {
+                <p>Watchlist is empty.</p>
+            }
+        </div>
+    </div>
+</div>
+
+<!-- Slick Slider'ı başlatmak için script -->
+<script>
+    $(document).ready(function () {
+        $('.slick-slider').slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 2000,
+            prevArrow: '<button type="button" class="slick-prev">&#8592; Previous</button>',
+            nextArrow: '<button type="button" class="slick-next">&#8594; Next</button>'
+        });
+    });
+</script>

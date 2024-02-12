@@ -1,0 +1,10 @@
+﻿@model FilmFolio.Models.Favorite
+
+<form asp-action="MovieAddEdit" method="post">
+    <br></br>
+    <div class="form-group">
+        <label asp-for="MovieID">Select Movie</label>
+        <select asp-for="MovieID" asp-items="@(ViewBag.MovieList as IEnumerable<SelectListItem>)" class="form-control"></select>
+    </div>
+    <button type="submit" class="btn btn-primary">Add to Watchlist</button>
+</form>

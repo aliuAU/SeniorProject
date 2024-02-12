@@ -1,0 +1,155 @@
+﻿@model List<FilmFolio.Models.Movie>
+@{
+    ViewData["Title"] = "Home Page";
+}
+<!-- Hero section -->
+<script defer src="~/scripts/homepagerecommender.js"></script>
+<style>
+    .tm-testimonials-carousel {
+        display: flex; /* Flexbox kullanarak öğeleri yatay olarak hizalar */
+        overflow-x: auto; /* Yatay kaydırmayı etkinleştirir */
+        gap: 20px; /* Öğeler arasında boşluk bırakır */
+    }
+
+    .tm-testimonial-item {
+        flex: 0 0 auto; /* Flex öğelerinin boyutunu sabit tutar */
+    }
+    /* İsteğe bağlı olarak diğer stil düzenlemeleri buraya eklenebilir */
+</style>
+
+<section id="infinite" class="text-white tm-font-big tm-parallax">
+    <!-- Navigation -->
+    <div class="text-center tm-hero-text-container">
+        <div class="tm-hero-text-container-inner">
+            <div class="tm-hero-subtitle">
+                <p style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size:5.5rem; margin: 150px;">FILMFOLIO</p>
+                <h2 style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">Keep track of movies you've seen.</h2>
+                <h2>Keep those you wish to view in mind.</h2> 
+                <h2>Let your friends know what's amazing!</h2>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="python-output" class="tm-section-pad-top hide" style="display: none;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="tm-text-primary tm-section-title mb-4">Recommended Movies</h2>
+                <div class="tm-script-output">
+                    <pre>@ViewBag.PythonOutput</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="testimonials" class="tm-section-pad-top tm-parallax-2">
+    <div class="container tm-testimonials-content">
+        <div class="row">
+            <div class="col-lg-12 tm-content-box">
+                <h2 class="text-white text-center mb-4 tm-section-title">RECOMMENDED FOR YOU</h2>
+                <div class="mx-auto tm-gallery-container tm-gallery-container-2">
+                    <div class="tm-testimonials-carousel" style="justify-content: center;">
+                        <!-- Filmler buraya dinamik olarak eklenecek -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tm-bg-overlay"></div>
+</section>
+<section id="gallery" class="tm-section-pad-top">
+    <div class="container tm-container-gallery">
+        <div class="row">
+            <div class="text-center col-12">
+                <h2 class="tm-text-primary tm-section-title mb-4">Newly Released</h2>
+                <p class="mx-auto tm-section-desc">
+                    You can find newly released movies in this section.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="mx-auto tm-gallery-container">
+                    <div class="grid tm-gallery">
+                        @foreach (var movie in Model)
+                        {
+                            <figure class="effect-honey tm-gallery-item">
+                                <img src="@movie.ImageURL" alt="@movie.MovieName" class="img-fluid">
+                                <figcaption>
+                                    <h2><i>@movie.MovieName<span>@movie.Director</span></i></h2>
+                                </figcaption>
+                            </figure>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Contact -->
+<section id="contact" class="tm-section-pad-top tm-parallax-2">
+
+    <div class="container tm-container-contact">
+
+        <div class="row">
+
+            <div class="text-center col-12">
+                <h2 class="tm-section-title mb-4">Contact Us</h2>
+                <p class="mb-5">
+                </p><br>
+            </div>
+
+            <div class="col-sm-12 col-md-6">
+                <form action="" method="get">
+                    <input id="name" name="name" type="text" placeholder="Name" class="tm-input" required />
+                    <input id="email" name="email" type="email" placeholder="Email" class="tm-input" required />
+                    <textarea id="message" name="message" rows="8" placeholder="Message" class="tm-input" required></textarea>
+                    <button type="submit" class="btn tm-btn-submit">Submit</button>
+                </form>
+            </div>
+
+            <div class="col-sm-12 col-md-6">
+
+                <div class="~/template/contact-item">
+                    <a rel="nofollow" href="" class="item-link">
+                        <i class="far fa-2x fa-comment mr-4"></i>
+                        <span class="mb-0">Online</span>
+                    </a>
+                </div>
+
+                <div class="~/template/contact-item">
+                    <a rel="nofollow" href="mailto:mail@company.com" class="item-link">
+                        <i class="far fa-2x fa-envelope mr-4"></i>
+                        <span class="mb-0">filmfolio@filmFolio.com</span>
+                    </a>
+                </div>
+
+                <div class="~/template/contact-item">
+                    <a rel="nofollow" href="https://www.google.com/maps" class="item-link">
+                        <i class="fas fa-2x fa-map-marker-alt mr-4"></i>
+                        <span class="mb-0">Lokasyon</span>
+                    </a>
+                </div>
+
+                <div class="~/template/contact-item">
+                    <a rel="nofollow" href="tel:0100200340" class="item-link">
+                        <i class="fas fa-2x fa-phone-square mr-4"></i>
+                        <span class="mb-0">255-662-5566</span>
+                    </a>
+                </div>
+
+                <div class="~/template/contact-item">&nbsp;</div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <footer class="text-center small tm-footer">
+        <p class="mb-0">
+        </p>
+    </footer>
+
+</section>

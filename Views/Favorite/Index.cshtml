@@ -1,0 +1,37 @@
+﻿@model List<FilmFolio.Models.Favorite>
+
+@if (TempData["ok"] != null)
+{
+    <h2>@TempData["ok"]</h2>
+}
+
+<div class="container">
+    <div class="row pt-3 pb-4">
+        <div>
+            <h1>Favorite List</h1>
+        </div>
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Movie ID</th>
+                <th>Movie Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var favorite in Model)
+            {
+                <tr style="background-color: white; color: black;">
+                    <td>@favorite.MovieID</td>
+                    <td>@favorite.Movie.MovieName</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="row pt-3 pb-2">
+        <div>
+            <a asp-controller="Favorite" asp-action="MovieAddEdit" class="btn btn-lg btn-primary">Add to Watchlist</a>
+        </div>
+    </div>
+</div>
