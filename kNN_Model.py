@@ -9,7 +9,7 @@ import pickle
 
 
 # Connection settings
-server_name = "LAPTOP-STO5B2IC"
+server_name = "ALI"
 database_name = "FilmFolio"
 trusted_connection = "yes"  # Use "yes" for Windows Authentication, "no" for SQL Server Authentication
 
